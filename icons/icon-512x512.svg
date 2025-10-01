@@ -1,0 +1,36 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="64" fill="#4CAF50"/>
+  <circle cx="256" cy="256" r="200" fill="#ffffff" fill-opacity="0.1"/>
+  
+  <!-- Fork -->
+  <path d="M180 160 L180 352 M150 160 L210 160 M150 180 L210 180 M150 200 L210 200" stroke="#ffffff" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Knife -->
+  <path d="M332 160 L332 352 M312 160 L352 160 M312 175 L352 175" stroke="#ffffff" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Plate -->
+  <ellipse cx="256" cy="320" rx="100" ry="20" fill="#ffffff" fill-opacity="0.3"/>
+  
+  <!-- Food items -->
+  <circle cx="220" cy="310" r="16" fill="#FF9800"/>
+  <circle cx="292" cy="310" r="16" fill="#FF5722"/>
+  <ellipse cx="256" cy="295" rx="24" ry="12" fill="#8BC34A"/>
+  <circle cx="240" cy="280" r="10" fill="#FFC107"/>
+  <circle cx="272" cy="280" r="10" fill="#E91E63"/>
+  
+  <!-- AI Brain symbol -->
+  <circle cx="256" cy="120" r="32" fill="#ffffff" fill-opacity="0.2"/>
+  <path d="M224 105 Q256 90 288 105 Q280 120 256 120 Q232 120 224 105" fill="#ffffff" fill-opacity="0.4"/>
+  <circle cx="240" cy="112" r="4" fill="#ffffff"/>
+  <circle cx="272" cy="112" r="4" fill="#ffffff"/>
+  
+  <!-- Neural network lines -->
+  <path d="M200 140 Q230 160 256 140 Q282 160 312 140" stroke="#ffffff" stroke-width="3" stroke-opacity="0.5" fill="none"/>
+  <path d="M210 170 Q240 190 256 170 Q272 190 302 170" stroke="#ffffff" stroke-width="2" stroke-opacity="0.3" fill="none"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="100" r="8" fill="#ffffff" fill-opacity="0.2"/>
+  <circle cx="362" cy="100" r="8" fill="#ffffff" fill-opacity="0.2"/>
+  <circle cx="100" cy="200" r="6" fill="#ffffff" fill-opacity="0.15"/>
+  <circle cx="412" cy="200" r="6" fill="#ffffff" fill-opacity="0.15"/>
+</svg>

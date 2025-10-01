@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food AI - Умный подбор питания</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="description" content="Food AI - умное приложение для подбора питания и планирования меню на неделю">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512x512.png">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Page -->
+            <div id="home-page" class="page active">
+                <div class="hero-section">
+                    <h2>Добро пожаловать!</h2>
+                    <p>Умный помощник для планирования вашего питания</p>
+                    
+                    <!-- Statistics Section -->
+                    <div class="statistics-section">
+                        <h3>Ваша статистика</h3>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">📊</div>
+                                <div class="stat-content">
+                                    <h4>Сегодня</h4>
+                                    <p class="stat-number" id="today-calories">0</p>
+                                    <span class="stat-label">ккал</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">📈</div>
+                                <div class="stat-content">
+                                    <h4>За неделю</h4>
+                                    <p class="stat-number" id="week-calories">0</p>
+                                    <span class="stat-label">ккал</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">📅</div>
+                                <div class="stat-content">
+                                    <h4>За месяц</h4>
+                                    <p class="stat-number" id="month-calories">0</p>
+                                    <span class="stat-label">ккал</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-details">
+                            <div class="detail-card">
+                                <h4>Запланированных дней</h4>
+                                <p class="detail-number" id="planned-days">0</p>
+                            </div>
+                            <div class="detail-card">
+                                <h4>Любимое блюдо</h4>
+                                <p class="detail-text" id="favorite-meal">Не определено</p>
+                            </div>
+                            <div class="detail-card">
+                                <h4>Цель достигнута</h4>
+                                <p class="detail-percentage" id="goal-progress">0%</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-features">
+                        <div class="feature-card">
+                            <div class="feature-icon">📅</div>
+                            <h3>Планирование меню</h3>
+                            <p>Составляйте меню на неделю с учетом ваших предпочтений</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🤖</div>
+                            <h3>ИИ рекомендации</h3>
+                            <p>Получайте персональные рекомендации на основе ваших целей</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🥗</div>
+                            <h3>Здоровое питание</h3>
+                            <p>Сбалансированные рецепты для здорового образа жизни</p>
+                        </div>
+                    </div>
+                    <button class="cta-button" onclick="showPage('menu')">Начать планирование</button>
+                </div>
+            </div>
+
+            <!-- Menu Page -->
+            <div id="menu-page" class="page">
+                <div class="page-header">
+                    <h2>Планирование меню</h2>
+                    <p>Выберите дни для планирования питания</p>
+                </div>
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="calendar-nav" id="prev-month">‹</button>
+                        <h3 id="current-month"></h3>
+                        <button class="calendar-nav" id="next-month">›</button>
+                    </div>
+                    <div class="calendar-grid" id="calendar-grid">
+                        <!-- Calendar will be generated by JavaScript -->
+                    </div>
+                </div>
+                <div class="meal-planning">
+                    <div class="selected-day-info">
+                        <h3 id="selected-date">Выберите день для планирования</h3>
+                        <div class="meal-slots">
+                            <div class="meal-slot">
+                                <h4>Завтрак</h4>
+                                <div class="meal-content" data-meal="breakfast">
+                                    <p>Нажмите для добавления блюда</p>
+                                </div>
+                            </div>
+                            <div class="meal-slot">
+                                <h4>Обед</h4>
+                                <div class="meal-content" data-meal="lunch">
+                                    <p>Нажмите для добавления блюда</p>
+                                </div>
+                            </div>
+                            <div class="meal-slot">
+                                <h4>Ужин</h4>
+                                <div class="meal-content" data-meal="dinner">
+                                    <p>Нажмите для добавления блюда</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Page -->
+            <div id="profile-page" class="page">
+                <div class="page-header">
+                    <h2>Личный кабинет</h2>
+                    <p>Управляйте своими предпочтениями и целями</p>
+                </div>
+                <div class="profile-content">
+                    <div class="profile-section">
+                        <h3>Личная информация</h3>
+                        <div class="form-group">
+                            <label for="user-name">Имя:</label>
+                            <input type="text" id="user-name" placeholder="Введите ваше имя">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-age">Возраст:</label>
+                            <input type="number" id="user-age" placeholder="Введите ваш возраст">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-weight">Вес (кг):</label>
+                            <input type="number" id="user-weight" placeholder="Введите ваш вес">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-height">Рост (см):</label>
+                            <input type="number" id="user-height" placeholder="Введите ваш рост">
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>Цели питания</h3>
+                        <div class="goals-grid">
+                            <label class="goal-option">
+                                <input type="radio" name="goal" value="weight-loss">
+                                <span>Похудение</span>
+                            </label>
+                            <label class="goal-option">
+                                <input type="radio" name="goal" value="weight-gain">
+                                <span>Набор массы</span>
+                            </label>
+                            <label class="goal-option">
+                                <input type="radio" name="goal" value="maintenance">
+                                <span>Поддержание веса</span>
+                            </label>
+                            <label class="goal-option">
+                                <input type="radio" name="goal" value="health">
+                                <span>Здоровое питание</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>Пищевые предпочтения</h3>
+                        <div class="preferences-grid">
+                            <label class="preference-option">
+                                <input type="checkbox" value="vegetarian">
+                                <span>Вегетарианство</span>
+                            </label>
+                            <label class="preference-option">
+                                <input type="checkbox" value="vegan">
+                                <span>Веганство</span>
+                            </label>
+                            <label class="preference-option">
+                                <input type="checkbox" value="gluten-free">
+                                <span>Без глютена</span>
+                            </label>
+                            <label class="preference-option">
+                                <input type="checkbox" value="dairy-free">
+                                <span>Без молочных продуктов</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button class="save-button">Сохранить настройки</button>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="nav-item active" data-page="home">
+                <div class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 22V12H15V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="nav-label">Главная</span>
+            </div>
+            
+            <div class="nav-item" data-page="menu">
+                <div class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 3V5H16V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 3V5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V19C20 19.5304 19.7893 20.0391 19.4142 20.4142C19.0391 20.7893 18.5304 21 18 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H8V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 9H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 13H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 17H12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="nav-label">Меню</span>
+            </div>
+            
+            <div class="nav-item" data-page="profile">
+                <div class="nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="nav-label">Профиль</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

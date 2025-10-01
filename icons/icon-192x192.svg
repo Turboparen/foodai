@@ -1,0 +1,24 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" rx="24" fill="#4CAF50"/>
+  <circle cx="96" cy="96" r="80" fill="#ffffff" fill-opacity="0.1"/>
+  
+  <!-- Fork -->
+  <path d="M70 60 L70 132 M60 60 L80 60 M60 70 L80 70 M60 80 L80 80" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Knife -->
+  <path d="M122 60 L122 132 M118 60 L126 60 M118 65 L126 65" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Plate -->
+  <ellipse cx="96" cy="120" rx="40" ry="8" fill="#ffffff" fill-opacity="0.3"/>
+  
+  <!-- Food items -->
+  <circle cx="85" cy="115" r="6" fill="#FF9800"/>
+  <circle cx="107" cy="115" r="6" fill="#FF5722"/>
+  <ellipse cx="96" cy="108" rx="8" ry="4" fill="#8BC34A"/>
+  
+  <!-- AI Brain symbol -->
+  <circle cx="96" cy="50" r="12" fill="#ffffff" fill-opacity="0.2"/>
+  <path d="M88 45 Q96 40 104 45 Q100 50 96 50 Q92 50 88 45" fill="#ffffff" fill-opacity="0.4"/>
+  <circle cx="92" cy="48" r="1.5" fill="#ffffff"/>
+  <circle cx="100" cy="48" r="1.5" fill="#ffffff"/>
+</svg>
